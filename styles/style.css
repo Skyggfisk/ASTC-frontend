@@ -43,3 +43,8 @@ body {
     transition: margin-left 0.6s;
     overflow: hidden;
 }
+.map{
+    width: 90%;
+    align-content: center;
+    max-width: 100%;
+}
