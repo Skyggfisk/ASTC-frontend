@@ -1,62 +1,51 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="styles/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.5.0/css/solid.css"
-      integrity="sha384-rdyFrfAIC05c5ph7BKz3l5NG5yEottvO/DQ0dCrwD8gzeQDjYBHNr1ucUpQuljos"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.5.0/css/fontawesome.css"
-      integrity="sha384-u5J7JghGz0qUrmEsWzBQkfvc8nK3fUT7DCaQzNQ+q4oEXhGSx+P2OqjWsfIRB8QT"
-      crossorigin="anonymous"
-    />
 
-    <title>ASTC Web App</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="styles/style.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/solid.css" integrity="sha384-rdyFrfAIC05c5ph7BKz3l5NG5yEottvO/DQ0dCrwD8gzeQDjYBHNr1ucUpQuljos"
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/fontawesome.css" integrity="sha384-u5J7JghGz0qUrmEsWzBQkfvc8nK3fUT7DCaQzNQ+q4oEXhGSx+P2OqjWsfIRB8QT"
+    crossorigin="anonymous" />
 
-  <body>
-    <header>
-      <nav>
-        <div id="content">
-          <span class="slide">
-            <a href="#" onclick="openSlideMenu()">
-              <i class="fas fa-bars"></i>
-            </a>
-          </span>
-          <div class="nav" id="menu">
-            <a href="#" class="close" onclick="closeSlideMenu()">
-              <i class="fas fa-times"></i
-            ></a>
-            <a href="#">Home</a> <a href="#">Map</a> <a href="#">Help</a>
-            <a href="#">Contact</a>
-          </div>
+  <title>ASTC Web App</title>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div id="content">
+        <span class="slide">
+          <a href="#" onclick="openSlideMenu()">
+            <i class="fas fa-bars"></i>
+          </a>
+          <a href="index.html">
+
+              <img id="logo" src="images/aalborgstor.png" alt="Aalborg storcenter logo" />
+
+          </a>
+        </span>
+        <div class="nav" id="menu">
+          <a href="#" class="close" onclick="closeSlideMenu()">
+            <i class="fas fa-times"></i></a>
+          <a href="#">Home</a> <a href="#">Map</a> <a href="#">Help</a>
+          <a href="#">Contact</a>
         </div>
-        <a href="index.html">
-          <center>
-            <img
-              id="logo"
-              src="http://www.aalborgkfum.dk/wp-content/uploads/2014/10/aalborgstor.png"
-              alt="Aalborg storcenter logo"
-            />
-          </center>
-        </a>
-      </nav>
-    </header>
-    <div class="searchbar">
-      <form>
-        <input type="text" name="search" placeholder="Type..." />
-        <input type="Submit" name="submit" value="Search" />
-      </form>
-    </div>
-    <div id="map">
-        <iframe src="views/astc-map.html"></iframe>
-    </div>
-  </body>
-  <script type="text/javascript" src="scripts/app.js"></script>
+      </div>
+    </nav>
+  </header>
+  <div class="searchbar">
+    <form>
+      <input type="text" name="search" placeholder="Type..." />
+      <input type="Submit" name="submit" value="Search" />
+    </form>
+  </div>
+  <div id="map">
+    <iframe src="views/astc-map.html"></iframe>
+  </div>
+</body>
+<script type="text/javascript" src="scripts/app.js"></script>
+
 </html>
