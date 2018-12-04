@@ -97,7 +97,15 @@ input[type="submit"]:hover {
   max-width: 100%;
 }
 
+#map {
+  display: flex;
+  align-content: center;
+  width: 80%;
+  max-width: 100%;
+}
+
 object {
   width: 500px;
   height: 500px;
+  align-content: center;
 }
