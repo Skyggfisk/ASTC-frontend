@@ -1,0 +1,4 @@
+
+.selectedShop{
+    fill: rgb(0, 255, 170);
+  }
