@@ -1,7 +1,12 @@
+*{
+  font-family: sans-serif;
+}
+
 #results {
   width: 100%;
-  height: 300px;
+  height: auto;
   overflow: scroll;
+
 }
 
 .result {
@@ -11,6 +16,10 @@
   border: 2px solid grey;
   padding: 5px;
   margin-bottom: 5px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid transparent;
+  border-radius: 5px;
+
 }
 
 .product-image {

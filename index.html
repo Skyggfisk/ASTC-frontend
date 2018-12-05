@@ -15,27 +15,27 @@
 
 <body>
   <header>
-          <a class="slide" href="#" onclick="openSlideMenu()">
-            <i class="fas fa-bars"></i>
-          </a>
-        <a id="logo" href="index.html">
+    <a class="slide" href="#" onclick="openSlideMenu()">
+      <i class="fas fa-bars"></i>
+    </a>
+    <a id="logo" href="index.html">
 
-            <img src="images/aalborgstor.png" alt="Aalborg storcenter logo" />
+      <img src="images/aalborgstor.png" alt="Aalborg storcenter logo" />
 
-        </a>
-        <div class="nav" id="menu">
-          <a href="#" class="close" onclick="closeSlideMenu()">
-            <i class="fas fa-times"></i></a>
-          <a href="index.html">Home</a> 
-          <a href="#">Map</a> 
-          <a href="about.html">About</a>
-        </div>
+    </a>
+    <div class="nav" id="menu">
+      <a href="#" class="close" onclick="closeSlideMenu()">
+        <i class="fas fa-times"></i></a>
+      <a href="index.html">Home</a>
+      <a href="#">Map</a>
+      <a href="about.html">About</a>
+    </div>
   </header>
-  <div class="searchbar">
-    <form>
-      <input type="text" name="search" placeholder="Type..." />
-      <input type="Submit" name="submit" value="Search" />
-    </form>
+  <div id='search-box'>
+
+    <input id='search-text' name='q' placeholder='Search' type='text' />
+    <button id='search-button' type='submit'><span><i class="fas fa-search"></i></span></button>
+
   </div>
   <div id="map">
     <iframe src="views/astc-map.html"></iframe>

@@ -62,45 +62,50 @@ header {
   align-self: center;
 }
 
-.box {
-  position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 500px;
-    transform: translate(-50%,-50%);
-}
-input {
+#search-box{
   position: relative;
-  display: inline-block;
-  box-sizing: border-box;
-  transition: 0.5s;
+  width: 100%;
+  margin-bottom: 20px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
 }
-input[type="text"] {
-  background: #fff;
-  width: 80%;
-  height: 50px;
-  outline: none;
-  padding: 0 25px;
-  border-radius: 25px 0 0 25px;
-  max-width: 80%;
-  margin: 0 auto;
+#search-text 
+{
+font-size: 14px;
+color: #ddd;
+border-width: 0;
+background: transparent;
+  
+  
 }
-input[type="submit"] {
-  position: relative;
-  left: -5px;
-  border-radius: 0 25px 25px 0;
-  height: 50px;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  background: rgb(51, 51, 51);
-  color: #fff;
-  width: 15%;
-  max-width: 20%;
-  margin: 0 auto;
+#search-box input[type="text"]
+{
+width: 90%;
+padding: 11px 0 12px 1em;
+color: #333;
+outline: none; 
 }
-input[type="submit"]:hover {
-  background-color: #727272;
+
+#search-button {
+position: absolute;
+top: 0;
+right: 0;
+height: 42px;
+width: 80px;
+font-size: 14px;
+color: #fff;
+text-align: center;
+line-height: 42px;
+border-width: 0;
+background-color: rgba(17, 17, 17, 0.8);
+-webkit-border-radius: 0px 5px 5px 0px;
+-moz-border-radius: 0px 5px 5px 0px;
+border-radius: 0 25px 25px 0;
+cursor: pointer;
+}
+
+#search-button:hover{
+  background-color: rgba(155, 155, 155, 0.3)
 }
 
 #map {
@@ -111,22 +116,13 @@ input[type="submit"]:hover {
   overflow: hidden;
 }
 
-#map iframe,
-#map object,
-#map embed {
+#map iframe {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-}
-iframe{
-  align-content: center;
   border: none;
-  display:block;
-  width:100%;
-  height:80%;
-  margin:auto;
 }
 
 .panel{
