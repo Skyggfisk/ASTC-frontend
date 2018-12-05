@@ -53,59 +53,55 @@ header {
   display: flex;
   justify-content: center;
   margin-left: auto;
-	margin-right: auto;
+  margin-right: auto;
 }
 
-#logo img{
+#logo img {
   height: auto;
-  width:50%;
+  width: 50%;
   align-self: center;
 }
 
-#search-box{
+#search-box {
   position: relative;
   width: 100%;
   margin-bottom: 20px;
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 25px;
 }
-#search-text 
-{
-font-size: 14px;
-color: #ddd;
-border-width: 0;
-background: transparent;
-  
-  
+#search-text {
+  font-size: 14px;
+  color: #ddd;
+  border-width: 0;
+  background: transparent;
 }
-#search-box input[type="text"]
-{
-width: 90%;
-padding: 11px 0 12px 1em;
-color: #333;
-outline: none; 
+#search-box input[type="text"] {
+  width: 90%;
+  padding: 11px 0 12px 1em;
+  color: #333;
+  outline: none;
 }
 
 #search-button {
-position: absolute;
-top: 0;
-right: 0;
-height: 42px;
-width: 80px;
-font-size: 14px;
-color: #fff;
-text-align: center;
-line-height: 42px;
-border-width: 0;
-background-color: rgba(17, 17, 17, 0.8);
--webkit-border-radius: 0px 5px 5px 0px;
--moz-border-radius: 0px 5px 5px 0px;
-border-radius: 0 25px 25px 0;
-cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 42px;
+  width: 80px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  line-height: 42px;
+  border-width: 0;
+  background-color: rgba(17, 17, 17, 0.8);
+  -webkit-border-radius: 0px 5px 5px 0px;
+  -moz-border-radius: 0px 5px 5px 0px;
+  border-radius: 0 25px 25px 0;
+  cursor: pointer;
 }
 
-#search-button:hover{
-  background-color: rgba(155, 155, 155, 0.3)
+#search-button:hover {
+  background-color: rgba(155, 155, 155, 0.3);
 }
 
 #map {
@@ -114,6 +110,10 @@ cursor: pointer;
   padding-top: 30px;
   height: 0;
   overflow: hidden;
+}
+
+iframe {
+  border: none;
 }
 
 #map iframe {
@@ -125,16 +125,15 @@ cursor: pointer;
   border: none;
 }
 
-.panel{
+.panel {
   margin-bottom: 20px;
   background-color: rgba(255, 255, 255, 0.5);
   border: 1px solid transparent;
   border-radius: 5px;
   text-align: justify;
-  
 }
 
-.panel-header{
+.panel-header {
   background-color: #d4d4d428;
   padding: 5px 15px;
   border-bottom: 1px solid transparent;
@@ -142,6 +141,6 @@ cursor: pointer;
   border-top-right-radius: 3px;
 }
 
-.panel-body{
+.panel-body {
   padding: 10px;
 }
