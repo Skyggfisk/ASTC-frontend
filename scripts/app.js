@@ -12,7 +12,7 @@ function closeSlideMenu() {
 function searchHandler() {
   document.getElementById(
     "app"
-  ).innerHTML = `<iframe src="views/search-results.html"></iframe>"`;
+  ).innerHTML = `<iframe src="views/search-results.html"></iframe>`;
 }
 
 // Replaces the current app with the map
