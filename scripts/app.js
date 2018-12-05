@@ -8,7 +8,7 @@ function closeSlideMenu() {
   document.getElementById("menu").style.width = "0px";
 }
 
-// TODO should ideally place a spinner while awaiting results to build
+// TODO should ideally place a spinner while waiting for results to build
 function searchHandler() {
   document.getElementById(
     "app"
