@@ -46,6 +46,7 @@ body {
   transition: margin-left 0.6s;
   overflow: hidden;
   display: flex;
+  margin-bottom: 20px;
 }
 #logo {
   max-height:100%;
@@ -120,3 +121,23 @@ iframe{
   margin:auto;
 }
 
+.panel{
+  margin-bottom: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid transparent;
+  border-radius: 5px;
+  text-align: justify;
+  
+}
+
+.panel-header{
+  background-color: #d4d4d428;
+  padding: 5px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.panel-body{
+  padding: 10px;
+}
