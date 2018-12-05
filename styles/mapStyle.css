@@ -1,9 +1,8 @@
+.selectedShop {
+  fill: rgb(0, 255, 170);
+}
 
-.selectedShop{
-    fill: rgb(0, 255, 170);
-  }
-
-svg{
+svg {
   width: 100%;
   height: auto;
 }
