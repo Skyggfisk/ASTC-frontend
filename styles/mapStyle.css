@@ -6,3 +6,7 @@ svg {
   width: 100%;
   height: auto;
 }
+
+.selectedshop {
+    fill: red;
+}

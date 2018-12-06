@@ -25,9 +25,14 @@ function openMap() {
 
 function shop(){
   console.log("start");
-  var iframe = document.getElementById("frame").className = "sdf";
-  var target = iframe.contentWindow.document.getElementById("layer101").className = "dfg";
+    var iframe = document.getElementById("frame");
+    //console.log(iframe);
+    //console.log(iframe.contentWindow.document.getElementById("map").innerHTML);
+    var selectedtarget = iframe.contentWindow.document.getElementById("BR");
 
-  var shop =document.getElementById("layer101").className = "fgdg";
+    selectedtarget.classList.toggle("selectedshop");
+    //console.log(selectedtarget.classList);
+    //selectedtarget.classlist.add("test-2-success");
+    //console.log(selectedtarget.classList);
 }
 
