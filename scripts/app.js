@@ -12,13 +12,22 @@ function closeSlideMenu() {
 function searchHandler() {
   document.getElementById(
     "app"
-  ).innerHTML = `<iframe src="views/search-results.html"></iframe>`;
+  ).innerHTML = '<iframe id="frame" src="views/search-results.html"></iframe>';
 }
 
 // Replaces the current app with the map
 function openMap() {
   document.getElementById(
     "app"
-  ).innerHTML = `<div id="map"><iframe src="views/astc-map.html"></iframe></div>`;
+  ).innerHTML = '<iframe id="frame" src="views/astc-map.html"></iframe>';
   closeSlideMenu();
 }
+
+function shop(){
+  console.log("start");
+  var iframe = document.getElementById("frame").className = "sdf";
+  var target = iframe.contentWindow.document.getElementById("layer101").className = "dfg";
+
+  var shop =document.getElementById("layer101").className = "fgdg";
+}
+

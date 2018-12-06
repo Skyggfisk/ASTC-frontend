@@ -1,5 +1,5 @@
-.selectedShop {
-  fill: rgb(0, 255, 170);
+.shop:hover {
+  fill: antiquewhite;
 }
 
 svg {
