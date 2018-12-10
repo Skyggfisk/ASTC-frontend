@@ -16,7 +16,7 @@
         <title>ASTC Web App</title>
     <link rel="stylesheet" href="../styles/style.css" />
     </head>
-    <body>
+    <body onload="loadHome()">
 
         <header>
             <a class="slide" href="#" onclick="openSlideMenu()">
@@ -43,7 +43,7 @@
             </button>
         </div>
 
-        <div class="container activepage" id="content-home">
+        <div class="container" id="content-home">
 
 
 
@@ -57,7 +57,7 @@
 
                 <div class="deals-flex">
                     <div class="deals-item">
-                        <a href="map.html" class="deals-link">
+                        <a href="#" class="deals-link">
                             <img class="deals-img" src="https://via.placeholder.com/200?text=Product+image" />
                             <p class="deals-name">Product 1</p>
                             <p class="deals-price">Price: 123kr</p>
@@ -65,7 +65,7 @@
                     </div>
 
                     <div class="deals-item">
-                        <a href="map.html" class="deals-link">
+                        <a href="#" class="deals-link">
                             <img class="deals-img" src="https://via.placeholder.com/200?text=Product+image" />
                             <p class="deals-name">Product 2</p>
                             <p class="deals-price">Price: 123kr</p>
@@ -73,7 +73,7 @@
                     </div>
 
                     <div class="deals-item">
-                        <a href="map.html" class="deals-link">
+                        <a href="#" class="deals-link">
                             <img class="deals-img" src="https://via.placeholder.com/200?text=Product+image" />
                             <p class="deals-name">Product 3</p>
                             <p class="deals-price">Price: 123kr</p>
@@ -82,7 +82,7 @@
                 </div>
                 <div class="deals-flex">
                     <div class="deals-item">
-                        <a href="map.html" class="deals-link">
+                        <a href="#" class="deals-link">
                             <img class="deals-img" src="https://via.placeholder.com/200?text=Product+image" />
                             <p class="deals-name">Product 4</p>
                             <p class="deals-price">Price: 123kr</p>
@@ -90,7 +90,7 @@
                     </div>
 
                     <div class="deals-item">
-                        <a href="map.html" class="deals-link">
+                        <a href="#" class="deals-link">
                             <img class="deals-img" src="https://via.placeholder.com/200?text=Product+image" />
                             <p class="deals-name">Product 5</p>
                             <p class="deals-price">Price: 123kr</p>
@@ -98,7 +98,7 @@
                     </div>
 
                     <div class="deals-item">
-                        <a href="map.html" class="deals-link">
+                        <a href="#" class="deals-link">
                             <img class="deals-img" src="https://via.placeholder.com/200?text=Product+image" />
                             <p class="deals-name">Product 6</p>
                             <p class="deals-price">Price: 123kr</p>
@@ -107,7 +107,7 @@
                 </div>
                 <div class="deals-flex">
                     <div class="deals-item">
-                        <a href="map.html" class="deals-link">
+                        <a href="#" class="deals-link">
                             <img class="deals-img" src="https://via.placeholder.com/200?text=Product+image" />
                             <p class="deals-name">Product 7</p>
                             <p class="deals-price">Price: 123kr</p>
@@ -115,7 +115,7 @@
                     </div>
 
                     <div class="deals-item">
-                        <a href="map.html" class="deals-link">
+                        <a href="#" class="deals-link">
                             <img class="deals-img" src="https://via.placeholder.com/200?text=Product+image" />
                             <p class="deals-name">Product 8</p>
                             <p class="deals-price">Price: 123kr</p>
@@ -123,7 +123,7 @@
                     </div>
 
                     <div class="deals-item">
-                        <a href="map.html" class="deals-link">
+                        <a href="#" class="deals-link">
                             <img class="deals-img" src="https://via.placeholder.com/200?text=Product+image" />
                             <p class="deals-name">Product 9</p>
                             <p class="deals-price">Price: 123kr</p>
@@ -135,7 +135,7 @@
 
         </div>
 
-        <div class="container inactivepage" id="content-map">
+        <div class="container" id="content-map">
 
             <div id="app">
                 <iframe id="frame" src="views/astc-map.html"></iframe>
@@ -146,7 +146,7 @@
 
         </div>
 
-        <div class="container inactivepage" id="content-about">
+        <div class="container" id="content-about">
             <div class="panel">
                 <div class="panel-header">
                     <h3>What does this app do?</h3>
@@ -184,6 +184,12 @@
                     </p>
                 </div>
             </div>
+        </div>
+
+        <div id="content-searchresults">
+            
+
+
         </div>
 
         <div id="scaleMarker"></div>

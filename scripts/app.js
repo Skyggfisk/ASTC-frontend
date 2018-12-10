@@ -11,13 +11,19 @@ function closeSlideMenu() {
 function loadHome() {
 
     var homecontent = document.getElementById("content-home");
-    homecontent.classList.replace("inactivepage", "activepage");
+    homecontent.hidden = false;
 
-    var mapcontent = document.getElementById("content-map")
-    mapcontent.classList.replace("activepage", "inactivepage");
+    var mapcontent = document.getElementById("content-map");
+    mapcontent.hidden = true;
 
-    var aboutcontent = document.getElementById("content-about")
-    aboutcontent.classList.replace("activepage", "inactivepage");
+    var aboutcontent = document.getElementById("content-about");
+    aboutcontent.hidden = true;
+
+    var searchbar = document.getElementById("search-bar");
+    searchbar.hidden = false;
+
+    var searchcontent = document.getElementById("content-searchresults");
+    searchcontent.hidden = true;
 
     closeSlideMenu();
 }
@@ -25,13 +31,19 @@ function loadHome() {
 function loadMap() {
 
     var homecontent = document.getElementById("content-home");
-    homecontent.classList.replace("activepage", "inactivepage");
+    homecontent.hidden = true;
 
-    var mapcontent = document.getElementById("content-map")
-    mapcontent.classList.replace("inactivepage", "activepage");
+    var mapcontent = document.getElementById("content-map");
+    mapcontent.hidden = false;
 
-    var aboutcontent = document.getElementById("content-about")
-    aboutcontent.classList.replace("activepage", "inactivepage");
+    var aboutcontent = document.getElementById("content-about");
+    aboutcontent.hidden = true;
+
+    var searchbar = document.getElementById("search-bar");
+    searchbar.hidden = false;
+
+    var searchcontent = document.getElementById("content-searchresults");
+    searchcontent.hidden = true;
 
     closeSlideMenu();
 }
@@ -39,13 +51,19 @@ function loadMap() {
 function loadAbout() {
 
     var homecontent = document.getElementById("content-home");
-    homecontent.classList.replace("activepage", "inactivepage");
+    homecontent.hidden = true;
 
-    var mapcontent = document.getElementById("content-map")
-    mapcontent.classList.replace("activepage", "inactivepage");
+    var mapcontent = document.getElementById("content-map");
+    mapcontent.hidden = true;
 
-    var aboutcontent = document.getElementById("content-about")
-    aboutcontent.classList.replace("inactivepage", "activepage");
+    var aboutcontent = document.getElementById("content-about");
+    aboutcontent.hidden = false;
+
+    var searchbar = document.getElementById("search-bar");
+    searchbar.hidden = true;
+
+    var searchcontent = document.getElementById("content-searchresults");
+    searchcontent.hidden = true;
 
     closeSlideMenu();
 }
@@ -57,7 +75,19 @@ function loadAbout() {
 //  ).innerHTML = '<iframe id="frame" src="views/search-results.html"></iframe>';
 //}
 function searchHandler() {
-    window.location.href("search.html")
+    var homecontent = document.getElementById("content-home");
+    homecontent.hidden = true;
+
+    var mapcontent = document.getElementById("content-map");
+    mapcontent.hidden = true;
+
+    var aboutcontent = document.getElementById("content-about");
+    aboutcontent.hidden = true;
+
+    var searchcontent = document.getElementById("content-searchresults");
+    searchcontent.hidden = false;
+
+    searchcontent.innerHTML = "";
 
     fetch('https://localhost:44320/api/products')
         .then(
@@ -69,9 +99,28 @@ function searchHandler() {
             }
 
             response.json().then(function (data) {
-                console.log(data);
-            });
+                //console.log(data);
 
+                for (let i = 0; i < data.length; i++) {
+
+                    let product =
+                    `<div class="result">
+                        <img
+                            class="product-image"
+                            src="https://via.placeholder.com/200?text=Product+image"
+                            alt="image missing"
+                        />
+                        <div class="product-info">
+                            <p class="product-name">${data[i].productName}</p>
+                            <p class="product-price">price</p>
+                            <p class="product-store">store</p>
+                        </div>
+                    </div>`
+
+                    searchcontent.innerHTML += product;
+
+                }
+            });
 
         }
     )
