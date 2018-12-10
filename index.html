@@ -14,6 +14,7 @@
               crossorigin="anonymous" />
 
         <title>ASTC Web App</title>
+    <link rel="stylesheet" href="../styles/style.css" />
     </head>
     <body>
 
@@ -28,20 +29,23 @@
                 <a href="#" class="close" onclick="closeSlideMenu()">
                     <i class="fas fa-times"></i>
                 </a>
-                <a href="index.html" onclick="shop()">Home</a>
-                <a href="map.html" onclick="openMap()">Map</a>
-                <a href="about.html">About</a>
+                <a href="#" onclick="loadHome()">Home</a>
+                <a href="#" onclick="loadMap()">Map</a>
+                <a href="#" onclick="loadAbout()">About</a>
             </div>
+
         </header>
 
-        <div class="container">
+        <div id="search-bar">
+            <input id="search-text" name="q" placeholder="Search..." type="text" />
+            <button id="search-button" type="submit" onclick="searchHandler()">
+                <span><i class="fas fa-search"></i></span>
+            </button>
+        </div>
 
-            <div id="search-box">
-                <input id="search-text" name="q" placeholder="Search..." type="text" />
-                <button id="search-button" type="submit" onclick="searchHandler()">
-                    <span><i class="fas fa-search"></i></span>
-                </button>
-            </div>
+        <div class="container activepage" id="content-home">
+
+
 
             <h1 class="welcometext">
                 Welcome to Aalborg Storcenter!
@@ -131,9 +135,60 @@
 
         </div>
 
+        <div class="container inactivepage" id="content-map">
+
+            <div id="app">
+                <iframe id="frame" src="views/astc-map.html"></iframe>
+            </div>
+            <span class="testbutton" onclick="shop()">
+                Color store
+            </span>
+
+        </div>
+
+        <div class="container inactivepage" id="content-about">
+            <div class="panel">
+                <div class="panel-header">
+                    <h3>What does this app do?</h3>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        Find the shop it is selling the product your looking for with the best
+                        price possible. Find where that shop is in the map
+                    </p>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-header">
+                    <h3>How to use it</h3>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        Type in the search bar what you want to find.
+                        The app will show the results that match your search sorted by price.
+                        If you don't know where the store selling that product is, simply click on the product and the app will show
+                        you where the store is.
+                    </p>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-header">
+                    <h3>Contact info</h3>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        Hobrovej 452 <br />
+                        9200 Aalborg SV <br />
+                        Tel .: 98 18 23 10 <br />
+                        Correo: info@astc.dk
+                    </p>
+                </div>
+            </div>
+        </div>
+
         <div id="scaleMarker"></div>
 
     </body>
 
-    <script type="text/javascript" src="scripts/app.js"></script>
+<script type="text/javascript" src="scripts/app.js"></script>
 </html>

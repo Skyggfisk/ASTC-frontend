@@ -83,7 +83,7 @@ header {
   align-self: center;
 }
 
-#search-box {
+#search-bar {
   position: relative;
   width: 100%;
   margin-bottom: 20px;
@@ -96,7 +96,7 @@ header {
   border-width: 0;
   background: transparent;
 }
-#search-box input[type="text"] {
+#search-bar input[type="text"] {
   width: 90%;
   padding: 11px 0 12px 1em;
   color: #333;
@@ -210,6 +210,14 @@ header {
     margin: 0;
     padding: 0;
     text-decoration: none;
+}
+
+.activepage {
+    display: initial;
+}
+
+.inactivepage {
+    display: none;
 }
 
 /*----- Media Queries -----*/
