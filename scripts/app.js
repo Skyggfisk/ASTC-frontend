@@ -8,6 +8,7 @@ function closeSlideMenu() {
   document.getElementById("menu").style.width = "0px";
 }
 
+//Display only the home page and search bar
 function loadHome() {
 
     var homecontent = document.getElementById("content-home");
@@ -28,6 +29,7 @@ function loadHome() {
     closeSlideMenu();
 }
 
+//Display only the "map" page and search bar
 function loadMap() {
 
     var homecontent = document.getElementById("content-home");
@@ -48,6 +50,7 @@ function loadMap() {
     closeSlideMenu();
 }
 
+//Display only the "about" page
 function loadAbout() {
 
     var homecontent = document.getElementById("content-home");
@@ -74,7 +77,11 @@ function loadAbout() {
 //    "app"
 //  ).innerHTML = '<iframe id="frame" src="views/search-results.html"></iframe>';
 //}
+
+//The search function, currently only looking through products and not stores
 function searchHandler() {
+
+    //hide all content besides the search results
     var homecontent = document.getElementById("content-home");
     homecontent.hidden = true;
 
@@ -87,56 +94,111 @@ function searchHandler() {
     var searchcontent = document.getElementById("content-searchresults");
     searchcontent.hidden = false;
 
+    //clear previous results
     searchcontent.innerHTML = "";
 
-    fetch('https://localhost:44320/api/products')
-        .then(
-        function (response) {
-            if (response.status !== 200) {
-                console.log('Looks like there was a problem. Status Code: ' +
-                    response.status);
-                return;
-            }
+    //get search bar input
+    let searchquery = document.getElementById("search-text").value;
 
-            response.json().then(function (data) {
-                //console.log(data);
+    //create url for the api
+    let searchurl = "https://localhost:44320/api/search/" + searchquery;
 
-                for (let i = 0; i < data.length; i++) {
+    //check if search query is empty, and display an error
+    if (searchquery == "") {
 
-                    let product =
-                    `<div class="result">
-                        <img
-                            class="product-image"
-                            src="https://via.placeholder.com/200?text=Product+image"
-                            alt="image missing"
-                        />
-                        <div class="product-info">
-                            <p class="product-name">${data[i].productName}</p>
-                            <p class="product-price">price</p>
-                            <p class="product-store">store</p>
-                        </div>
-                    </div>`
+        let errortext =
+            `<div class="error">
+            Please enter a search term.
+        </div>`
 
-                    searchcontent.innerHTML += product;
+        searchcontent.innerHTML = errortext;
+
+      //if search isn't empty, get data from api
+    } else {
+        fetch(searchurl)
+            .then(
+                //if http response isn't 200 ("okay"), print an error to the console
+                function (response) {
+                    if (response.status !== 200) {
+                        console.log('Looks like there was a problem. Status Code: ' +
+                            response.status);
+                        return;
+                    }
+                    //get the api returned data and save it as the array "data"
+                    response.json().then(function (data) {
+
+                        //if there are no results, show an error
+                        if (!Array.isArray(data) || !data.length) {
+
+                            let errortext =
+                            `<div class="error">
+                                No results for the product: ${searchquery}
+                            </div>`
+
+                            searchcontent.innerHTML = errortext;
+                        }
+
+                        //if there are results, create a new html element for each one
+                        for (let i = 0; i < data.length; i++) {
+
+                            let productid ="productdd" + i;
+
+                            let product =
+                                `<div class="result">
+                                <img
+                                    class="product-image"
+                                    src="https://via.placeholder.com/200?text=Product+image"
+                                    alt="image missing"
+                                />
+                                <p class="product-name">${data[i].productName}</p>
+                                <a href="#" class="seller-dropdown" onclick="toggleSellers('${productid}')">
+                                    <i class="fas fa-angle-left"></i>
+                                </a>
+                                <div class="seller-info seller-hidden" id="${productid}">`;
+
+                            for (let j = 0; j < data[i].productSellers.length; j++) {
+
+                                console.log(data[i].productSellers[j]);
+
+                                let seller =
+                                `<p class="seller-name">${data[i].productSellers[j].shopname}</p>
+                                <p class="seller-price">${data[i].productSellers[j].price}</p>
+                                </br>`;
+
+                                product += seller;
+                            }
+
+                            product += `</div></div>`
+
+                            searchcontent.innerHTML += product;
+
+                        }
+                    });
 
                 }
-            });
+            )
+                .catch(function (err) {
+                    console.log('Fetch Error :-S', err);
+                });
+    }
 
-        }
-    )
-        .catch(function (err) {
-            console.log('Fetch Error :-S', err);
-        });
+    
 
+}
+
+function toggleSellers(id) {
+    let target = document.getElementById(id);
+
+    target.classList.toggle("seller-hidden");
 }
 
 // Replaces the current app with the map
-function openMap() {
-  document.getElementById(
-    "app"
-  ).innerHTML = '<iframe id="frame" src="views/astc-map.html"></iframe>';
-  closeSlideMenu();
-}
+//function openMap() {
+//  document.getElementById(
+//    "app"
+//  ).innerHTML = '<iframe id="frame" src="views/astc-map.html"></iframe>';
+//  closeSlideMenu();
+//}
 
 function shop(){
   console.log("start");
