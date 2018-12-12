@@ -16,8 +16,8 @@ self.addEventListener("install", e => {
   );
 });
 
-self.addEventListener("fetch", e => {
-  e.respondWith(async response => {
-    console.log(response);
-  });
-});
+// self.addEventListener("fetch", e => {
+//   e.respondWith(async response => {
+//     console.log(response);
+//   });
+// });
