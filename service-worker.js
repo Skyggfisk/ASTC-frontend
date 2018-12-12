@@ -6,13 +6,13 @@ self.addEventListener('install', function (event) {
             .then(function (cache) {
                 console.log('Opened cache');
                 return cache.addAll(
-                    'index.html',
-                    '/views/astc-map.html',
-                    '/styles/style.css',
-                    '/styles/mapStyle.css',
-                    '/scripts/app.js',
-                    '/images/favicon.png',
-                    '/images/aalborgstor.png'
+                    './index.html',
+                    './views/astc-map.html',
+                    './styles/style.css',
+                    './styles/mapStyle.css',
+                    './scripts/app.js',
+                    './images/favicon.png',
+                    './images/aalborgstor.png'
                 );
             })
     );
