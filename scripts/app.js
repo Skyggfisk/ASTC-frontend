@@ -1,7 +1,7 @@
 //Service worker registration
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
-        navigator.serviceWorker.register('/scripts/service-worker.js').then(function (registration) {
+        navigator.serviceWorker.register('ASTC-frontend/scripts/service-worker.js').then(function (registration) {
             // Registration was successful
             console.log('ServiceWorker registration successful with scope: ', registration.scope);
         }, function (err) {
