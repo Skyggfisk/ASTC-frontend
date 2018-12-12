@@ -101,7 +101,7 @@ function searchHandler() {
     let searchquery = document.getElementById("search-text").value;
 
     //create url for the api
-    let searchurl = "https://localhost:44320/api/search/" + searchquery;
+    let searchurl = "https://astcapi.azurewebsites.net/api/search/" + searchquery;
 
     //check if search query is empty, and display an error
     if (searchquery == "") {
