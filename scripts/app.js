@@ -1,3 +1,16 @@
+//Service worker registration
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+        navigator.serviceWorker.register('../service-worker.js').then(function (registration) {
+            // Registration was successful
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, function (err) {
+            // registration failed :(
+            console.log('ServiceWorker registration failed: ', err);
+        });
+    });
+}
+
 // open the drawer menu from the left
 function openSlideMenu() {
   document.getElementById("menu").style.width = "250px";
@@ -141,7 +154,7 @@ function searchHandler() {
                         //if there are results, create a new html element for each one
                         for (let i = 0; i < data.length; i++) {
 
-                            let productid ="productdd" + i;
+                            let productid = "productdd" + i;
 
                             let product =
                                 `<div class="result">
@@ -149,6 +162,7 @@ function searchHandler() {
                                     class="product-image"
                                     src="https://via.placeholder.com/200?text=Product+image"
                                     alt="image missing"
+                                    onclick="testArray(${test})"
                                 />
                                 <p class="product-name">${data[i].productName}</p>
                                 <a href="#" class="seller-dropdown" onclick="toggleSellers('${productid}')">
@@ -192,12 +206,20 @@ function toggleSellers(id) {
     target.classList.toggle("seller-hidden");
 }
 
+function testArray(...args) {
+    console.log(args);
+}
+
 // Replaces the current app with the map
 //function openMap() {
 //  document.getElementById(
 //    "app"
 //  ).innerHTML = '<iframe id="frame" src="views/astc-map.html"></iframe>';
 //  closeSlideMenu();
+//}
+
+//function displayOnMap(product) {
+//    let 
 //}
 
 function shop(){
