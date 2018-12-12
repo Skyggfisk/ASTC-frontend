@@ -6,7 +6,7 @@ self.addEventListener('install', function (event) {
             .then(function (cache) {
                 console.log('Opened cache');
                 return cache.addAll(
-                    './index.html',
+                    'index.html',
                     './views/astc-map.html',
                     './styles/style.css',
                     './styles/mapStyle.css',
@@ -14,9 +14,10 @@ self.addEventListener('install', function (event) {
                     './images/favicon.png',
                     './images/aalborgstor.png'
                 );
+                console.log('Caching done');
             })
     );
-    console.log('Caching done');
+    
 });
 
 //self.addEventListener('fetch')
