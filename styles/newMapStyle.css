@@ -1,0 +1,36 @@
+svg {
+    background-image: url(../images/map.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+path, rect, polygon, polyline {
+    fill: transparent;
+    cursor: pointer;
+    transition: fill 0.2s;
+}
+
+svg a:focus,
+svg a:hover {
+    outline: none;
+}
+
+    svg a:focus path,
+    svg a:hover path,
+    svg a:focus rect,
+    svg a:hover rect,
+    svg a:focus polygon,
+    svg a:hover polygon,
+    svg a:focus polyline,
+    svg a:hover polyline {
+        fill: rgba(31, 242, 210, 0.47);
+        cursor: pointer;
+    }
+
+.selectedshop path,
+.selectedshop rect,
+.selectedshop polygon,
+.selectedshop polyline{
+    fill: rgba(31, 242, 210, 0.47);
+}
