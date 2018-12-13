@@ -96,6 +96,16 @@ function loadAbout() {
 
 //The search function, currently only looking through products and not stores
 function searchHandler() {
+  //hide the previous search results on the map
+  const iframe = document.getElementById("frame");
+  let selections = iframe.contentWindow.document.getElementsByClassName(
+    "selectedshop"
+  );
+
+  while (selections.length) {
+    selections[0].classList.remove("selectedshop");
+  }
+
   //hide all content besides the search results
   var homecontent = document.getElementById("content-home");
   homecontent.hidden = true;
@@ -171,10 +181,10 @@ function searchHandler() {
                 console.log(
                   data[i].productSellers[j].shopname.replace(/\s+/g, "")
                 );
-                // let iframe = document.getElementById("frame");
-                // let selectedTarget = iframe.contentWindow.document.getElementById(
-                //   `${data[i].productSellers[j].shopname.replace(/\s+/g, "")}`
-                // );
+                let selectedTarget = iframe.contentWindow.document.getElementById(
+                  `${data[i].productSellers[j].shopname.replace(/\s+/g, "")}`
+                );
+                selectedTarget.classList.toggle("selectedshop");
 
                 let seller = `<p class="seller-name">${
                   data[i].productSellers[j].shopname
