@@ -1,194 +1,203 @@
 ﻿<html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <link rel="icon" type="image/png" href="images/favicon.png" />
-        <link rel="stylesheet" href="styles/style.css" />
-        <link rel="stylesheet"
-              href="https://use.fontawesome.com/releases/v5.5.0/css/solid.css"
-              integrity="sha384-rdyFrfAIC05c5ph7BKz3l5NG5yEottvO/DQ0dCrwD8gzeQDjYBHNr1ucUpQuljos"
-              crossorigin="anonymous" />
-        <link rel="stylesheet"
-              href="https://use.fontawesome.com/releases/v5.5.0/css/fontawesome.css"
-              integrity="sha384-u5J7JghGz0qUrmEsWzBQkfvc8nK3fUT7DCaQzNQ+q4oEXhGSx+P2OqjWsfIRB8QT"
-              crossorigin="anonymous" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.5.0/css/solid.css"
+      integrity="sha384-rdyFrfAIC05c5ph7BKz3l5NG5yEottvO/DQ0dCrwD8gzeQDjYBHNr1ucUpQuljos"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.5.0/css/fontawesome.css"
+      integrity="sha384-u5J7JghGz0qUrmEsWzBQkfvc8nK3fUT7DCaQzNQ+q4oEXhGSx+P2OqjWsfIRB8QT"
+      crossorigin="anonymous"
+    />
 
-        <title>ASTC Web App</title>
-    </head>
-    <body onload="loadHome()">
+    <title>ASTC Web App</title>
+  </head>
+  <body onload="loadHome()">
+    <header>
+      <a class="slide" href="#" onclick="openSlideMenu()">
+        <i class="fas fa-bars"></i>
+      </a>
+      <a id="logo" href="index.html">
+        <img src="images/aalborgstor.png" alt="Aalborg storcenter logo" />
+      </a>
+      <div class="nav" id="menu">
+        <a href="#" class="close" onclick="closeSlideMenu()">
+          <i class="fas fa-times"></i>
+        </a>
+        <a href="#" onclick="loadHome()">Home</a>
+        <a href="#" onclick="loadMap()">Map</a>
+        <a href="#" onclick="loadAbout()">About</a>
+      </div>
+    </header>
 
-        <header>
-            <a class="slide" href="#" onclick="openSlideMenu()">
-                <i class="fas fa-bars"></i>
+    <div id="search-bar">
+      <input id="search-text" name="q" placeholder="Search..." type="text" />
+      <button id="search-button" type="submit" onclick="searchHandler()">
+        <span><i class="fas fa-search"></i></span>
+      </button>
+    </div>
+
+    <div class="container" id="content-home">
+      <h1 class="welcometext">Welcome to Aalborg Storcenter!</h1>
+
+      <div class="deals-container">
+        <h2>Featured deals:</h2>
+
+        <div class="deals-flex">
+          <div class="deals-item">
+            <a href="#" class="deals-link">
+              <img
+                class="deals-img"
+                src="https://via.placeholder.com/200?text=Product+image"
+              />
+              <p class="deals-name">Product 1</p>
+              <p class="deals-price">Price: 123kr</p>
             </a>
-            <a id="logo" href="index.html">
-                <img src="images/aalborgstor.png" alt="Aalborg storcenter logo" />
+          </div>
+
+          <div class="deals-item">
+            <a href="#" class="deals-link">
+              <img
+                class="deals-img"
+                src="https://via.placeholder.com/200?text=Product+image"
+              />
+              <p class="deals-name">Product 2</p>
+              <p class="deals-price">Price: 123kr</p>
             </a>
-            <div class="nav" id="menu">
-                <a href="#" class="close" onclick="closeSlideMenu()">
-                    <i class="fas fa-times"></i>
-                </a>
-                <a href="#" onclick="loadHome()">Home</a>
-                <a href="#" onclick="loadMap()">Map</a>
-                <a href="#" onclick="loadAbout()">About</a>
-            </div>
+          </div>
 
-        </header>
-
-        <div id="search-bar">
-            <input id="search-text" name="q" placeholder="Search..." type="text" />
-            <button id="search-button" type="submit" onclick="searchHandler()">
-                <span><i class="fas fa-search"></i></span>
-            </button>
+          <div class="deals-item">
+            <a href="#" class="deals-link">
+              <img
+                class="deals-img"
+                src="https://via.placeholder.com/200?text=Product+image"
+              />
+              <p class="deals-name">Product 3</p>
+              <p class="deals-price">Price: 123kr</p>
+            </a>
+          </div>
         </div>
+        <div class="deals-flex">
+          <div class="deals-item">
+            <a href="#" class="deals-link">
+              <img
+                class="deals-img"
+                src="https://via.placeholder.com/200?text=Product+image"
+              />
+              <p class="deals-name">Product 4</p>
+              <p class="deals-price">Price: 123kr</p>
+            </a>
+          </div>
 
-        <div class="container" id="content-home">
+          <div class="deals-item">
+            <a href="#" class="deals-link">
+              <img
+                class="deals-img"
+                src="https://via.placeholder.com/200?text=Product+image"
+              />
+              <p class="deals-name">Product 5</p>
+              <p class="deals-price">Price: 123kr</p>
+            </a>
+          </div>
 
-
-
-            <h1 class="welcometext">
-                Welcome to Aalborg Storcenter!
-            </h1>
-
-            <div class="deals-container">
-
-                <h2>Featured deals:</h2>
-
-                <div class="deals-flex">
-                    <div class="deals-item">
-                        <a href="#" class="deals-link">
-                            <img class="deals-img" src="https://via.placeholder.com/200?text=Product+image" />
-                            <p class="deals-name">Product 1</p>
-                            <p class="deals-price">Price: 123kr</p>
-                        </a>
-                    </div>
-
-                    <div class="deals-item">
-                        <a href="#" class="deals-link">
-                            <img class="deals-img" src="https://via.placeholder.com/200?text=Product+image" />
-                            <p class="deals-name">Product 2</p>
-                            <p class="deals-price">Price: 123kr</p>
-                        </a>
-                    </div>
-
-                    <div class="deals-item">
-                        <a href="#" class="deals-link">
-                            <img class="deals-img" src="https://via.placeholder.com/200?text=Product+image" />
-                            <p class="deals-name">Product 3</p>
-                            <p class="deals-price">Price: 123kr</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="deals-flex">
-                    <div class="deals-item">
-                        <a href="#" class="deals-link">
-                            <img class="deals-img" src="https://via.placeholder.com/200?text=Product+image" />
-                            <p class="deals-name">Product 4</p>
-                            <p class="deals-price">Price: 123kr</p>
-                        </a>
-                    </div>
-
-                    <div class="deals-item">
-                        <a href="#" class="deals-link">
-                            <img class="deals-img" src="https://via.placeholder.com/200?text=Product+image" />
-                            <p class="deals-name">Product 5</p>
-                            <p class="deals-price">Price: 123kr</p>
-                        </a>
-                    </div>
-
-                    <div class="deals-item">
-                        <a href="#" class="deals-link">
-                            <img class="deals-img" src="https://via.placeholder.com/200?text=Product+image" />
-                            <p class="deals-name">Product 6</p>
-                            <p class="deals-price">Price: 123kr</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="deals-flex">
-                    <div class="deals-item">
-                        <a href="#" class="deals-link">
-                            <img class="deals-img" src="https://via.placeholder.com/200?text=Product+image" />
-                            <p class="deals-name">Product 7</p>
-                            <p class="deals-price">Price: 123kr</p>
-                        </a>
-                    </div>
-
-                    <div class="deals-item">
-                        <a href="#" class="deals-link">
-                            <img class="deals-img" src="https://via.placeholder.com/200?text=Product+image" />
-                            <p class="deals-name">Product 8</p>
-                            <p class="deals-price">Price: 123kr</p>
-                        </a>
-                    </div>
-
-                    <div class="deals-item">
-                        <a href="#" class="deals-link">
-                            <img class="deals-img" src="https://via.placeholder.com/200?text=Product+image" />
-                            <p class="deals-name">Product 9</p>
-                            <p class="deals-price">Price: 123kr</p>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-
+          <div class="deals-item">
+            <a href="#" class="deals-link">
+              <img
+                class="deals-img"
+                src="https://via.placeholder.com/200?text=Product+image"
+              />
+              <p class="deals-name">Product 6</p>
+              <p class="deals-price">Price: 123kr</p>
+            </a>
+          </div>
         </div>
+        <div class="deals-flex">
+          <div class="deals-item">
+            <a href="#" class="deals-link">
+              <img
+                class="deals-img"
+                src="https://via.placeholder.com/200?text=Product+image"
+              />
+              <p class="deals-name">Product 7</p>
+              <p class="deals-price">Price: 123kr</p>
+            </a>
+          </div>
 
-        <div class="container" id="content-map">
+          <div class="deals-item">
+            <a href="#" class="deals-link">
+              <img
+                class="deals-img"
+                src="https://via.placeholder.com/200?text=Product+image"
+              />
+              <p class="deals-name">Product 8</p>
+              <p class="deals-price">Price: 123kr</p>
+            </a>
+          </div>
 
-            <div id="app">
-                <iframe id="frame" src="views/astc-map.html"></iframe>
-            </div>
-
+          <div class="deals-item">
+            <a href="#" class="deals-link">
+              <img
+                class="deals-img"
+                src="https://via.placeholder.com/200?text=Product+image"
+              />
+              <p class="deals-name">Product 9</p>
+              <p class="deals-price">Price: 123kr</p>
+            </a>
+          </div>
         </div>
+      </div>
+    </div>
 
-        <div class="container" id="content-about">
-            <div class="panel">
-                <div class="panel-header">
-                    <h3>What does this app do?</h3>
-                </div>
-                <div class="panel-body">
-                    <p>
-                        Find the shop it is selling the product your looking for with the best
-                        price possible. Find where that shop is in the map
-                    </p>
-                </div>
-            </div>
-            <div class="panel">
-                <div class="panel-header">
-                    <h3>How to use it</h3>
-                </div>
-                <div class="panel-body">
-                    <p>
-                        Type in the search bar what you want to find.
-                        The app will show the results that match your search sorted by price.
-                        If you don't know where the store selling that product is, simply click on the product and the app will show
-                        you where the store is.
-                    </p>
-                </div>
-            </div>
-            <div class="panel">
-                <div class="panel-header">
-                    <h3>Contact info</h3>
-                </div>
-                <div class="panel-body">
-                    <p>
-                        Hobrovej 452 <br />
-                        9200 Aalborg SV <br />
-                        Tel .: 98 18 23 10 <br />
-                        Correo: info@astc.dk
-                    </p>
-                </div>
-            </div>
+    <div class="container" id="content-map">
+      <div id="app"><iframe id="frame" src="views/astc-map.html"></iframe></div>
+    </div>
+
+    <div class="container" id="content-about">
+      <div class="panel">
+        <div class="panel-header"><h3>What does this app do?</h3></div>
+        <div class="panel-body">
+          <p>
+            Find the shops that are selling the products your looking for, with
+            the best price possible.
+          </p>
         </div>
-
-        <div id="content-searchresults">
+      </div>
+      <div class="panel">
+        <div class="panel-header"><h3>How to use it</h3></div>
+        <div class="panel-body">
+          <p>
+            Type in the search bar what you want to find. The app will show the
+            results that match your search sorted by price. If you don't know
+            where the store selling that product is, simply click on the product
+            and the app will show you where the shop is located.
+          </p>
         </div>
+      </div>
+      <div class="panel">
+        <div class="panel-header"><h3>Contact info</h3></div>
+        <div class="panel-body">
+          <p>
+            Hobrovej 452 <br />
+            9200 Aalborg SV <br />
+            Phone: <a href="tel:98182310">98 18 23 10</a> <br />
+            Email: <a href="mailto:info@astc.dk">info@astc.dk</a>
+          </p>
+        </div>
+      </div>
+    </div>
 
-        <div id="scaleMarker"></div>
+    <div id="content-searchresults"></div>
 
-    </body>
+    <div id="scaleMarker"></div>
+  </body>
 
-<script type="text/javascript" src="scripts/app.js"></script>
+  <script type="text/javascript" src="scripts/app.js"></script>
 </html>
