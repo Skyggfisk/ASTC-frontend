@@ -27,72 +27,38 @@ function closeSlideMenu() {
   document.getElementById("menu").style.width = "0px";
 }
 
-//Display only the home page and search bar
+// Display only the home page and search bar
 function loadHome() {
-  var homecontent = document.getElementById("content-home");
-  homecontent.hidden = false;
-
-  var mapcontent = document.getElementById("content-map");
-  mapcontent.hidden = true;
-
-  var aboutcontent = document.getElementById("content-about");
-  aboutcontent.hidden = true;
-
-  var searchbar = document.getElementById("search-bar");
-  searchbar.hidden = false;
-
-  var searchcontent = document.getElementById("content-searchresults");
-  searchcontent.hidden = true;
+  document.getElementById("content-home").hidden = false;
+  document.getElementById("content-map").hidden = true;
+  document.getElementById("content-about").hidden = true;
+  document.getElementById("search-bar").hidden = false;
+  document.getElementById("content-searchresults").hidden = true;
 
   closeSlideMenu();
 }
 
-//Display only the "map" page and search bar
+// Display only the "map" page and search bar
 function loadMap() {
-  var homecontent = document.getElementById("content-home");
-  homecontent.hidden = true;
-
-  var mapcontent = document.getElementById("content-map");
-  mapcontent.hidden = false;
-
-  var aboutcontent = document.getElementById("content-about");
-  aboutcontent.hidden = true;
-
-  var searchbar = document.getElementById("search-bar");
-  searchbar.hidden = false;
-
-  var searchcontent = document.getElementById("content-searchresults");
-  searchcontent.hidden = true;
+  document.getElementById("content-home").hidden = true;
+  document.getElementById("content-map").hidden = false;
+  document.getElementById("content-about").hidden = true;
+  document.getElementById("search-bar").hidden = false;
+  document.getElementById("content-searchresults").hidden = true;
 
   closeSlideMenu();
 }
 
-//Display only the "about" page
+// Display only the "about" page
 function loadAbout() {
-  var homecontent = document.getElementById("content-home");
-  homecontent.hidden = true;
-
-  var mapcontent = document.getElementById("content-map");
-  mapcontent.hidden = true;
-
-  var aboutcontent = document.getElementById("content-about");
-  aboutcontent.hidden = false;
-
-  var searchbar = document.getElementById("search-bar");
-  searchbar.hidden = true;
-
-  var searchcontent = document.getElementById("content-searchresults");
-  searchcontent.hidden = true;
+  document.getElementById("content-home").hidden = true;
+  document.getElementById("content-map").hidden = true;
+  document.getElementById("content-about").hidden = false;
+  document.getElementById("search-bar").hidden = true;
+  document.getElementById("content-searchresults").hidden = true;
 
   closeSlideMenu();
 }
-
-// TODO should ideally place a spinner while waiting for results to build
-//function searchHandler() {
-//  document.getElementById(
-//    "app"
-//  ).innerHTML = '<iframe id="frame" src="views/search-results.html"></iframe>';
-//}
 
 // global array for passing product info
 let pArr = [];
