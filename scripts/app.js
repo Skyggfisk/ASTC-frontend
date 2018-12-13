@@ -1,14 +1,20 @@
 //Service worker registration
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function () {
-        navigator.serviceWorker.register('./service-worker.js').then(function (registration) {
-            // Registration was successful
-            console.log('ServiceWorker registration successful with scope: ', registration.scope);
-        }, function (err) {
-            // registration failed :(
-            console.log('ServiceWorker registration failed: ', err);
-        });
-    });
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function() {
+    navigator.serviceWorker.register("./service-worker.js").then(
+      function(registration) {
+        // Registration was successful
+        console.log(
+          "ServiceWorker registration successful with scope: ",
+          registration.scope
+        );
+      },
+      function(err) {
+        // registration failed :(
+        console.log("ServiceWorker registration failed: ", err);
+      }
+    );
+  });
 }
 
 // open the drawer menu from the left
@@ -21,212 +27,160 @@ function closeSlideMenu() {
   document.getElementById("menu").style.width = "0px";
 }
 
-//Display only the home page and search bar
+// Display only the home page and search bar
 function loadHome() {
+  document.getElementById("content-home").hidden = false;
+  document.getElementById("content-map").hidden = true;
+  document.getElementById("content-about").hidden = true;
+  document.getElementById("search-bar").hidden = false;
+  document.getElementById("content-searchresults").hidden = true;
 
-    var homecontent = document.getElementById("content-home");
-    homecontent.hidden = false;
-
-    var mapcontent = document.getElementById("content-map");
-    mapcontent.hidden = true;
-
-    var aboutcontent = document.getElementById("content-about");
-    aboutcontent.hidden = true;
-
-    var searchbar = document.getElementById("search-bar");
-    searchbar.hidden = false;
-
-    var searchcontent = document.getElementById("content-searchresults");
-    searchcontent.hidden = true;
-
-    closeSlideMenu();
+  closeSlideMenu();
 }
 
-//Display only the "map" page and search bar
+// Display only the "map" page and search bar
 function loadMap() {
+  document.getElementById("content-home").hidden = true;
+  document.getElementById("content-map").hidden = false;
+  document.getElementById("content-about").hidden = true;
+  document.getElementById("search-bar").hidden = false;
+  document.getElementById("content-searchresults").hidden = true;
 
-    var homecontent = document.getElementById("content-home");
-    homecontent.hidden = true;
-
-    var mapcontent = document.getElementById("content-map");
-    mapcontent.hidden = false;
-
-    var aboutcontent = document.getElementById("content-about");
-    aboutcontent.hidden = true;
-
-    var searchbar = document.getElementById("search-bar");
-    searchbar.hidden = false;
-
-    var searchcontent = document.getElementById("content-searchresults");
-    searchcontent.hidden = true;
-
-    closeSlideMenu();
+  closeSlideMenu();
 }
 
-//Display only the "about" page
+// Display only the "about" page
 function loadAbout() {
+  document.getElementById("content-home").hidden = true;
+  document.getElementById("content-map").hidden = true;
+  document.getElementById("content-about").hidden = false;
+  document.getElementById("search-bar").hidden = true;
+  document.getElementById("content-searchresults").hidden = true;
 
-    var homecontent = document.getElementById("content-home");
-    homecontent.hidden = true;
-
-    var mapcontent = document.getElementById("content-map");
-    mapcontent.hidden = true;
-
-    var aboutcontent = document.getElementById("content-about");
-    aboutcontent.hidden = false;
-
-    var searchbar = document.getElementById("search-bar");
-    searchbar.hidden = true;
-
-    var searchcontent = document.getElementById("content-searchresults");
-    searchcontent.hidden = true;
-
-    closeSlideMenu();
+  closeSlideMenu();
 }
 
-// TODO should ideally place a spinner while waiting for results to build
-//function searchHandler() {
-//  document.getElementById(
-//    "app"
-//  ).innerHTML = '<iframe id="frame" src="views/search-results.html"></iframe>';
-//}
+// global array for passing product info
+let pArr = [];
 
 //The search function, currently only looking through products and not stores
 function searchHandler() {
+  //hide the previous search results on the map
+  // const iframe = document.getElementById("frame");
+  pArr = [];
 
-    //hide all content besides the search results
-    var homecontent = document.getElementById("content-home");
-    homecontent.hidden = true;
+  // clean up previous selections from the map view
+  let selections = document
+    .getElementById("frame")
+    .contentWindow.document.getElementsByClassName("selectedshop");
 
-    var mapcontent = document.getElementById("content-map");
-    mapcontent.hidden = true;
+  while (selections.length) {
+    selections[0].classList.remove("selectedshop");
+  }
 
-    var aboutcontent = document.getElementById("content-about");
-    aboutcontent.hidden = true;
+  // hide all content besides the search results
+  document.getElementById("content-home").hidden = true;
+  document.getElementById("content-map").hidden = true;
+  document.getElementById("content-about").hidden = true;
 
-    var searchcontent = document.getElementById("content-searchresults");
-    searchcontent.hidden = false;
+  // show search results and clear previous
+  let searchcontent = document.getElementById("content-searchresults");
+  searchcontent.hidden = false;
+  searchcontent.innerHTML = "";
 
-    //clear previous results
-    searchcontent.innerHTML = "";
+  // get search bar input
+  let searchquery = document.getElementById("search-text").value;
 
-    //get search bar input
-    let searchquery = document.getElementById("search-text").value;
+  // create url for the api
+  let searchurl = `https://astcapi.azurewebsites.net/api/search/${searchquery}`;
 
-    //create url for the api
-    let searchurl = "https://astcapi.azurewebsites.net/api/search/" + searchquery;
+  // display error if searchcontent is empty, else fetch
+  if (searchquery == "") {
+    let errortext = `<div class="error">Please enter a search term.</div>`;
+    searchcontent.innerHTML = errortext;
+  } else {
+    fetch(searchurl)
+      .then(response => {
+        if (response.status !== 200) {
+          console.log(
+            `Looks like there was a problem. Status Code: ${response.status}`
+          );
+          return;
+        }
+        // get the api returned data and save it as the array "data"
+        response.json().then(data => {
+          // if there are no results, show an error
+          if (!Array.isArray(data) || !data.length) {
+            let errortext = `<div class="error">No results for: ${searchquery}</div>`;
+            searchcontent.innerHTML = errortext;
+          }
 
-    //check if search query is empty, and display an error
-    if (searchquery == "") {
+          //if there are results, create a new html element for each one and push to the global array
+          for (let i = 0; i < data.length; i++) {
+            let productid = "productdd" + i;
+            pArr.push(data[i]);
 
-        let errortext =
-            `<div class="error">
-            Please enter a search term.
-        </div>`
-
-        searchcontent.innerHTML = errortext;
-
-      //if search isn't empty, get data from api
-    } else {
-        fetch(searchurl)
-            .then(
-                //if http response isn't 200 ("okay"), print an error to the console
-                function (response) {
-                    if (response.status !== 200) {
-                        console.log('Looks like there was a problem. Status Code: ' +
-                            response.status);
-                        return;
-                    }
-                    //get the api returned data and save it as the array "data"
-                    response.json().then(function (data) {
-
-                        //if there are no results, show an error
-                        if (!Array.isArray(data) || !data.length) {
-
-                            let errortext =
-                            `<div class="error">
-                                No results for the product: ${searchquery}
-                            </div>`
-
-                            searchcontent.innerHTML = errortext;
-                        }
-
-                        //if there are results, create a new html element for each one
-                        for (let i = 0; i < data.length; i++) {
-
-                            let productid = "productdd" + i;
-
-                            let product =
-                                `<div class="result">
+            let product = `<div class="result" id="res${i}">
                                 <img
                                     class="product-image"
                                     src="https://via.placeholder.com/200?text=Product+image"
                                     alt="image missing"
+                                    onclick="toMap(${i})"
                                 />
-                                <p class="product-name">${data[i].productName}</p>
+                                <p class="product-name">${
+                                  data[i].productName
+                                }</p>
                                 <a href="#" class="seller-dropdown" onclick="toggleSellers('${productid}')">
                                     <i class="fas fa-angle-left"></i>
                                 </a>
                                 <div class="seller-info seller-hidden" id="${productid}">`;
 
-                            for (let j = 0; j < data[i].productSellers.length; j++) {
+            for (let j = 0; j < data[i].productSellers.length; j++) {
+              let seller = `<p class="seller-name">${
+                data[i].productSellers[j].shopname
+              }</p>
+                  <p class="seller-price">${
+                    data[i].productSellers[j].price
+                  }</p></br>`;
 
-                                console.log(data[i].productSellers[j]);
+              product += seller;
+            }
 
-                                let seller =
-                                `<p class="seller-name">${data[i].productSellers[j].shopname}</p>
-                                <p class="seller-price">${data[i].productSellers[j].price}</p>
-                                </br>`;
+            product += `</div></div>`;
 
-                                product += seller;
-                            }
+            searchcontent.innerHTML += product;
+          }
+        });
+      })
+      .catch(function(err) {
+        console.log("Fetch Error :-S", err);
+      });
+  }
+}
 
-                            product += `</div></div>`
+// clone result node and display on map, then load the map
+function toMap(index) {
+  let clone = document.getElementById("res" + index).cloneNode(true);
+  let mapResultDiv = document.getElementById("mapResult");
+  mapResultDiv.innerHTML = "";
+  mapResultDiv.appendChild(clone);
 
-                            searchcontent.innerHTML += product;
+  pArr[index].productSellers.forEach(element => {
+    let shopname = element.shopname.replace(/\s+/g, "");
+    let iframe = document.getElementById("frame");
+    let selectedTarget = iframe.contentWindow.document.getElementById(shopname);
+    selectedTarget.classList.add("selectedshop");
+  });
 
-                        }
-                    });
-
-                }
-            )
-                .catch(function (err) {
-                    console.log('Fetch Error :-S', err);
-                });
-    }
-
-    
-
+  loadMap();
 }
 
 function toggleSellers(id) {
-    let target = document.getElementById(id);
-
-    target.classList.toggle("seller-hidden");
+  document.getElementById(id).classList.toggle("seller-hidden");
 }
 
-// Replaces the current app with the map
-//function openMap() {
-//  document.getElementById(
-//    "app"
-//  ).innerHTML = '<iframe id="frame" src="views/astc-map.html"></iframe>';
-//  closeSlideMenu();
-//}
-
-//function displayOnMap(product) {
-//    let 
-//}
-
-function shop(){
-  console.log("start");
-    var iframe = document.getElementById("frame");
-    //console.log(iframe);
-    //console.log(iframe.contentWindow.document.getElementById("map").innerHTML);
-    var selectedtarget = iframe.contentWindow.document.getElementById("BR");
-
-    selectedtarget.classList.toggle("selectedshop");
-    //console.log(selectedtarget.classList);
-    //selectedtarget.classlist.add("test-2-success");
-    //console.log(selectedtarget.classList);
+function shop() {
+  let iframe = document.getElementById("frame");
+  let selectedtarget = iframe.contentWindow.document.getElementById("BR");
+  selectedtarget.classList.toggle("selectedshop");
 }
-
