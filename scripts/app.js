@@ -162,7 +162,6 @@ function searchHandler() {
                                     class="product-image"
                                     src="https://via.placeholder.com/200?text=Product+image"
                                     alt="image missing"
-                                    onclick="testArray(${test})"
                                 />
                                 <p class="product-name">${data[i].productName}</p>
                                 <a href="#" class="seller-dropdown" onclick="toggleSellers('${productid}')">
@@ -204,10 +203,6 @@ function toggleSellers(id) {
     let target = document.getElementById(id);
 
     target.classList.toggle("seller-hidden");
-}
-
-function testArray(...args) {
-    console.log(args);
 }
 
 // Replaces the current app with the map
