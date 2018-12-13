@@ -66,76 +66,61 @@ let pArr = [];
 //The search function, currently only looking through products and not stores
 function searchHandler() {
   //hide the previous search results on the map
-  const iframe = document.getElementById("frame");
+  // const iframe = document.getElementById("frame");
   pArr = [];
 
-  let selections = iframe.contentWindow.document.getElementsByClassName(
-    "selectedshop"
-  );
+  // clean up previous selections from the map view
+  let selections = document
+    .getElementById("frame")
+    .contentWindow.document.getElementsByClassName("selectedshop");
 
   while (selections.length) {
     selections[0].classList.remove("selectedshop");
   }
 
-  //hide all content besides the search results
-  var homecontent = document.getElementById("content-home");
-  homecontent.hidden = true;
+  // hide all content besides the search results
+  document.getElementById("content-home").hidden = true;
+  document.getElementById("content-map").hidden = true;
+  document.getElementById("content-about").hidden = true;
 
-  var mapcontent = document.getElementById("content-map");
-  mapcontent.hidden = true;
-
-  var aboutcontent = document.getElementById("content-about");
-  aboutcontent.hidden = true;
-
-  var searchcontent = document.getElementById("content-searchresults");
+  // show search results and clear previous
+  let searchcontent = document.getElementById("content-searchresults");
   searchcontent.hidden = false;
-
-  //clear previous results
   searchcontent.innerHTML = "";
 
-  //get search bar input
+  // get search bar input
   let searchquery = document.getElementById("search-text").value;
 
-  //create url for the api
-  let searchurl = "https://astcapi.azurewebsites.net/api/search/" + searchquery;
+  // create url for the api
+  let searchurl = `https://astcapi.azurewebsites.net/api/search/${searchquery}`;
 
-  //check if search query is empty, and display an error
+  // display error if searchcontent is empty, else fetch
   if (searchquery == "") {
-    let errortext = `<div class="error">
-            Please enter a search term.
-        </div>`;
-
+    let errortext = `<div class="error">Please enter a search term.</div>`;
     searchcontent.innerHTML = errortext;
-
-    //if search isn't empty, get data from api
   } else {
     fetch(searchurl)
-      .then(
-        //if http response isn't 200 ("okay"), print an error to the console
-        function(response) {
-          if (response.status !== 200) {
-            console.log(
-              `Looks like there was a problem. Status Code: ${response.status}`
-            );
-            return;
+      .then(response => {
+        if (response.status !== 200) {
+          console.log(
+            `Looks like there was a problem. Status Code: ${response.status}`
+          );
+          return;
+        }
+        // get the api returned data and save it as the array "data"
+        response.json().then(data => {
+          // if there are no results, show an error
+          if (!Array.isArray(data) || !data.length) {
+            let errortext = `<div class="error">No results for: ${searchquery}</div>`;
+            searchcontent.innerHTML = errortext;
           }
-          //get the api returned data and save it as the array "data"
-          response.json().then(function(data) {
-            //if there are no results, show an error
-            if (!Array.isArray(data) || !data.length) {
-              let errortext = `<div class="error">
-                                No results for the product: ${searchquery}
-                            </div>`;
 
-              searchcontent.innerHTML = errortext;
-            }
+          //if there are results, create a new html element for each one and push to the global array
+          for (let i = 0; i < data.length; i++) {
+            let productid = "productdd" + i;
+            pArr.push(data[i]);
 
-            //if there are results, create a new html element for each one
-            for (let i = 0; i < data.length; i++) {
-              let productid = "productdd" + i;
-              pArr.push(data[i]);
-              console.log(pArr[i]);
-              let product = `<div class="result" id="res${i}">
+            let product = `<div class="result" id="res${i}">
                                 <img
                                     class="product-image"
                                     src="https://via.placeholder.com/200?text=Product+image"
@@ -150,40 +135,31 @@ function searchHandler() {
                                 </a>
                                 <div class="seller-info seller-hidden" id="${productid}">`;
 
-              for (let j = 0; j < data[i].productSellers.length; j++) {
-                // console.log(
-                //   data[i].productSellers[j].shopname.replace(/\s+/g, "")
-                // );
-                // let selectedTarget = iframe.contentWindow.document.getElementById(
-                //   `${data[i].productSellers[j].shopname.replace(/\s+/g, "")}`
-                // );
-                // selectedTarget.classList.toggle("selectedshop");
-
-                let seller = `<p class="seller-name">${
-                  data[i].productSellers[j].shopname
-                }</p>
+            for (let j = 0; j < data[i].productSellers.length; j++) {
+              let seller = `<p class="seller-name">${
+                data[i].productSellers[j].shopname
+              }</p>
                   <p class="seller-price">${
                     data[i].productSellers[j].price
                   }</p></br>`;
 
-                product += seller;
-              }
-
-              product += `</div></div>`;
-
-              searchcontent.innerHTML += product;
+              product += seller;
             }
-          });
-        }
-      )
+
+            product += `</div></div>`;
+
+            searchcontent.innerHTML += product;
+          }
+        });
+      })
       .catch(function(err) {
         console.log("Fetch Error :-S", err);
       });
   }
 }
 
+// clone result node and display on map, then load the map
 function toMap(index) {
-  // clone result node and display on map, then load the map
   let clone = document.getElementById("res" + index).cloneNode(true);
   let mapResultDiv = document.getElementById("mapResult");
   mapResultDiv.innerHTML = "";
@@ -191,44 +167,20 @@ function toMap(index) {
 
   pArr[index].productSellers.forEach(element => {
     let shopname = element.shopname.replace(/\s+/g, "");
-    console.log(shopname);
     let iframe = document.getElementById("frame");
     let selectedTarget = iframe.contentWindow.document.getElementById(shopname);
     selectedTarget.classList.add("selectedshop");
   });
 
-  console.log(clone);
-
   loadMap();
 }
 
 function toggleSellers(id) {
-  let target = document.getElementById(id);
-
-  target.classList.toggle("seller-hidden");
+  document.getElementById(id).classList.toggle("seller-hidden");
 }
 
-// Replaces the current app with the map
-//function openMap() {
-//  document.getElementById(
-//    "app"
-//  ).innerHTML = '<iframe id="frame" src="views/astc-map.html"></iframe>';
-//  closeSlideMenu();
-//}
-
-//function displayOnMap(product) {
-//    let
-//}
-
 function shop() {
-  console.log("start");
-  var iframe = document.getElementById("frame");
-  //console.log(iframe);
-  //console.log(iframe.contentWindow.document.getElementById("map").innerHTML);
-  var selectedtarget = iframe.contentWindow.document.getElementById("BR");
-
+  let iframe = document.getElementById("frame");
+  let selectedtarget = iframe.contentWindow.document.getElementById("BR");
   selectedtarget.classList.toggle("selectedshop");
-  //console.log(selectedtarget.classList);
-  //selectedtarget.classlist.add("test-2-success");
-  //console.log(selectedtarget.classList);
 }
