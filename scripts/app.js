@@ -86,7 +86,7 @@ function searchHandler() {
   // show search results and clear previous
   let searchcontent = document.getElementById("content-searchresults");
   searchcontent.hidden = false;
-  searchcontent.innerHTML = "";
+  searchcontent.innerHTML = "<div class='loader'></div>";
 
   // get search bar input
   let searchquery = document.getElementById("search-text").value;
@@ -101,6 +101,7 @@ function searchHandler() {
   } else {
     fetch(searchurl)
       .then(response => {
+        searchcontent.innerHTML = "";
         if (response.status !== 200) {
           console.log(
             `Looks like there was a problem. Status Code: ${response.status}`
