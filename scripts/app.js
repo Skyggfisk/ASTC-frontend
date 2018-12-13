@@ -94,10 +94,15 @@ function loadAbout() {
 //  ).innerHTML = '<iframe id="frame" src="views/search-results.html"></iframe>';
 //}
 
+// global array for passing product info
+let pArr = [];
+
 //The search function, currently only looking through products and not stores
 function searchHandler() {
   //hide the previous search results on the map
   const iframe = document.getElementById("frame");
+  pArr = [];
+
   let selections = iframe.contentWindow.document.getElementsByClassName(
     "selectedshop"
   );
@@ -162,12 +167,14 @@ function searchHandler() {
             //if there are results, create a new html element for each one
             for (let i = 0; i < data.length; i++) {
               let productid = "productdd" + i;
-
-              let product = `<div class="result">
+              pArr.push(data[i]);
+              console.log(pArr[i]);
+              let product = `<div class="result" id="res${i}">
                                 <img
                                     class="product-image"
                                     src="https://via.placeholder.com/200?text=Product+image"
                                     alt="image missing"
+                                    onclick="toMap(${i})"
                                 />
                                 <p class="product-name">${
                                   data[i].productName
@@ -178,13 +185,13 @@ function searchHandler() {
                                 <div class="seller-info seller-hidden" id="${productid}">`;
 
               for (let j = 0; j < data[i].productSellers.length; j++) {
-                console.log(
-                  data[i].productSellers[j].shopname.replace(/\s+/g, "")
-                );
-                let selectedTarget = iframe.contentWindow.document.getElementById(
-                  `${data[i].productSellers[j].shopname.replace(/\s+/g, "")}`
-                );
-                selectedTarget.classList.toggle("selectedshop");
+                // console.log(
+                //   data[i].productSellers[j].shopname.replace(/\s+/g, "")
+                // );
+                // let selectedTarget = iframe.contentWindow.document.getElementById(
+                //   `${data[i].productSellers[j].shopname.replace(/\s+/g, "")}`
+                // );
+                // selectedTarget.classList.toggle("selectedshop");
 
                 let seller = `<p class="seller-name">${
                   data[i].productSellers[j].shopname
@@ -207,6 +214,26 @@ function searchHandler() {
         console.log("Fetch Error :-S", err);
       });
   }
+}
+
+function toMap(index) {
+  // clone result node and display on map, then load the map
+  let clone = document.getElementById("res" + index).cloneNode(true);
+  let mapResultDiv = document.getElementById("mapResult");
+  mapResultDiv.innerHTML = "";
+  mapResultDiv.appendChild(clone);
+
+  pArr[index].productSellers.forEach(element => {
+    let shopname = element.shopname.replace(/\s+/g, "");
+    console.log(shopname);
+    let iframe = document.getElementById("frame");
+    let selectedTarget = iframe.contentWindow.document.getElementById(shopname);
+    selectedTarget.classList.add("selectedshop");
+  });
+
+  console.log(clone);
+
+  loadMap();
 }
 
 function toggleSellers(id) {
