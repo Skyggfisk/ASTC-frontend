@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="theme-color" content="#faebd7" />
-    <link rel="manifest" href="manifest.json"/>
+    <link rel="manifest" href="manifest.json" />
     <link rel="icon" type="image/png" href="images/favicon.png" />
     <link rel="stylesheet" href="styles/style.css" />
     <link
@@ -41,21 +41,19 @@
     </header>
 
     <form id="search-bar1">
-      <input id="search-text" name="q" placeholder="Search..." type="text" />
-      <button id="search-button" type="submit" onclick="searchHandler()">
+      <input id="search-text1" placeholder="Search..." type="text" />
+      <button id="search-button" type="submit" onclick="searchHandler(1)">
         <span><i class="fas fa-search"></i></span>
       </button>
     </form>
 
     <div class="container" id="content-home">
-
-        <form id="search-bar2" action="#">
-            <input id="search-text" name="q" placeholder="Search..." type="text" />
-            <button id="search-button" type="submit" onclick="searchHandler()">
-                <span><i class="fas fa-search"></i></span>
-            </button>
-        </form>
-
+      <form id="search-bar2" action="#">
+        <input id="search-text2" placeholder="Search..." type="text" />
+        <button id="search-button" type="submit" onclick="searchHandler(2)">
+          <span><i class="fas fa-search"></i></span>
+        </button>
+      </form>
     </div>
 
     <div class="container" id="content-map">
