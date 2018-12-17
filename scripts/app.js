@@ -66,7 +66,7 @@ function loadAbout() {
 // global array for passing product info
 let pArr = [];
 
-//prevent the search forms from reloading the page
+// prevent the search forms from reloading the page
 document
   .getElementById("search-bar1")
   .addEventListener("submit", function(event) {
@@ -79,10 +79,9 @@ document
     event.preventDefault();
   });
 
-//The search function, currently only looking through products and not stores
+// the search function, currently only looking through products and not shops
 function searchHandler(val) {
-  //hide the previous search results on the map
-  // const iframe = document.getElementById("frame");
+  // clear the previous search results on the map
   pArr = [];
 
   // clean up previous selections from the map view
@@ -106,14 +105,8 @@ function searchHandler(val) {
   searchcontent.hidden = false;
   searchcontent.innerHTML = "<div class='loader'></div>";
 
-  let searchquery = document.getElementById("search-text" + val).value;
-  console.log(val);
   // get search bar input
-  // if (val === 1) {
-  //   let searchquery = document.getElementById("search-text1").value;
-  // } else if (val === 2) {
-  //   let searchquery = document.getElementById("search-text2").value;
-  // }
+  let searchquery = document.getElementById("search-text" + val).value;
 
   // create url for the api
   let searchurl = `https://astcapi.azurewebsites.net/api/search/${searchquery}`;
@@ -140,7 +133,7 @@ function searchHandler(val) {
             searchcontent.innerHTML = errortext;
           }
 
-          //if there are results, create a new html element for each one and push to the global array
+          // if there are results, create a new html element for each one and push to the global array
           for (let i = 0; i < data.length; i++) {
             let productid = "productdd" + i;
             pArr.push(data[i]);
