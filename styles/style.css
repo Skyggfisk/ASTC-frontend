@@ -85,7 +85,8 @@ header {
   align-self: center;
 }
 
-#search-bar {
+#search-bar1,
+#search-bar2{
   position: relative;
   width: 100%;
   margin-bottom: 20px;
@@ -100,11 +101,12 @@ header {
   background: transparent;
 }
 
-#search-bar input[type="text"] {
-  width: 90%;
-  padding: 11px 0 12px 1em;
-  color: #333;
-  outline: none;
+#search-bar1 input[type="text"],
+#search-bar2 input[type="text"] {
+    width: 90%;
+    padding: 11px 0 12px 1em;
+    color: #333;
+    outline: none;
 }
 
 #search-button {

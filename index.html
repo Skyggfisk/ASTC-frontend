@@ -1,4 +1,5 @@
-﻿<html>
+﻿<!DOCTYPE html>
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,7 +20,6 @@
       integrity="sha384-u5J7JghGz0qUrmEsWzBQkfvc8nK3fUT7DCaQzNQ+q4oEXhGSx+P2OqjWsfIRB8QT"
       crossorigin="anonymous"
     />
-
     <title>ASTC Web App</title>
   </head>
   <body onload="loadHome()">
@@ -40,7 +40,7 @@
       </div>
     </header>
 
-    <form id="search-bar" action="#">
+    <form id="search-bar1">
       <input id="search-text" name="q" placeholder="Search..." type="text" />
       <button id="search-button" type="submit" onclick="searchHandler()">
         <span><i class="fas fa-search"></i></span>
@@ -48,114 +48,14 @@
     </form>
 
     <div class="container" id="content-home">
-      <h1 class="welcometext">Welcome to Aalborg Storcenter!</h1>
 
-      <div class="deals-container">
-        <h2>Featured deals:</h2>
+        <form id="search-bar2" action="#">
+            <input id="search-text" name="q" placeholder="Search..." type="text" />
+            <button id="search-button" type="submit" onclick="searchHandler()">
+                <span><i class="fas fa-search"></i></span>
+            </button>
+        </form>
 
-        <div class="deals-flex">
-          <div class="deals-item">
-            <a href="#" class="deals-link">
-              <img
-                class="deals-img"
-                src="https://via.placeholder.com/200?text=Product+image"
-              />
-              <p class="deals-name">Product 1</p>
-              <p class="deals-price">Price: 123kr</p>
-            </a>
-          </div>
-
-          <div class="deals-item">
-            <a href="#" class="deals-link">
-              <img
-                class="deals-img"
-                src="https://via.placeholder.com/200?text=Product+image"
-              />
-              <p class="deals-name">Product 2</p>
-              <p class="deals-price">Price: 123kr</p>
-            </a>
-          </div>
-
-          <div class="deals-item">
-            <a href="#" class="deals-link">
-              <img
-                class="deals-img"
-                src="https://via.placeholder.com/200?text=Product+image"
-              />
-              <p class="deals-name">Product 3</p>
-              <p class="deals-price">Price: 123kr</p>
-            </a>
-          </div>
-        </div>
-        <div class="deals-flex">
-          <div class="deals-item">
-            <a href="#" class="deals-link">
-              <img
-                class="deals-img"
-                src="https://via.placeholder.com/200?text=Product+image"
-              />
-              <p class="deals-name">Product 4</p>
-              <p class="deals-price">Price: 123kr</p>
-            </a>
-          </div>
-
-          <div class="deals-item">
-            <a href="#" class="deals-link">
-              <img
-                class="deals-img"
-                src="https://via.placeholder.com/200?text=Product+image"
-              />
-              <p class="deals-name">Product 5</p>
-              <p class="deals-price">Price: 123kr</p>
-            </a>
-          </div>
-
-          <div class="deals-item">
-            <a href="#" class="deals-link">
-              <img
-                class="deals-img"
-                src="https://via.placeholder.com/200?text=Product+image"
-              />
-              <p class="deals-name">Product 6</p>
-              <p class="deals-price">Price: 123kr</p>
-            </a>
-          </div>
-        </div>
-        <div class="deals-flex">
-          <div class="deals-item">
-            <a href="#" class="deals-link">
-              <img
-                class="deals-img"
-                src="https://via.placeholder.com/200?text=Product+image"
-              />
-              <p class="deals-name">Product 7</p>
-              <p class="deals-price">Price: 123kr</p>
-            </a>
-          </div>
-
-          <div class="deals-item">
-            <a href="#" class="deals-link">
-              <img
-                class="deals-img"
-                src="https://via.placeholder.com/200?text=Product+image"
-              />
-              <p class="deals-name">Product 8</p>
-              <p class="deals-price">Price: 123kr</p>
-            </a>
-          </div>
-
-          <div class="deals-item">
-            <a href="#" class="deals-link">
-              <img
-                class="deals-img"
-                src="https://via.placeholder.com/200?text=Product+image"
-              />
-              <p class="deals-name">Product 9</p>
-              <p class="deals-price">Price: 123kr</p>
-            </a>
-          </div>
-        </div>
-      </div>
     </div>
 
     <div class="container" id="content-map">

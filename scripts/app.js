@@ -32,7 +32,8 @@ function loadHome() {
   document.getElementById("content-home").hidden = false;
   document.getElementById("content-map").hidden = true;
   document.getElementById("content-about").hidden = true;
-  document.getElementById("search-bar").hidden = false;
+  document.getElementById("search-bar1").hidden = true;
+  document.getElementById("search-bar2").hidden = false;
   document.getElementById("content-searchresults").hidden = true;
 
   closeSlideMenu();
@@ -43,7 +44,8 @@ function loadMap() {
   document.getElementById("content-home").hidden = true;
   document.getElementById("content-map").hidden = false;
   document.getElementById("content-about").hidden = true;
-  document.getElementById("search-bar").hidden = false;
+  document.getElementById("search-bar1").hidden = false;
+  document.getElementById("search-bar2").hidden = true;
   document.getElementById("content-searchresults").hidden = true;
 
   closeSlideMenu();
@@ -54,7 +56,8 @@ function loadAbout() {
   document.getElementById("content-home").hidden = true;
   document.getElementById("content-map").hidden = true;
   document.getElementById("content-about").hidden = false;
-  document.getElementById("search-bar").hidden = true;
+  document.getElementById("search-bar1").hidden = true;
+  document.getElementById("search-bar2").hidden = true;
   document.getElementById("content-searchresults").hidden = true;
 
   closeSlideMenu();
@@ -62,6 +65,15 @@ function loadAbout() {
 
 // global array for passing product info
 let pArr = [];
+
+//prevent the search forms from reloading the page
+document.getElementById("search-bar1").addEventListener("submit", function (event) {
+    event.preventDefault();
+});
+
+document.getElementById("search-bar2").addEventListener("submit", function (event) {
+    event.preventDefault();
+});
 
 //The search function, currently only looking through products and not stores
 function searchHandler() {
