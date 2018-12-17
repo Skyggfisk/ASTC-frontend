@@ -3,6 +3,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="manifest" href="manifest.json"/>
     <link rel="icon" type="image/png" href="images/favicon.png" />
     <link rel="stylesheet" href="styles/style.css" />
     <link
@@ -38,12 +39,12 @@
       </div>
     </header>
 
-    <div id="search-bar">
+    <form id="search-bar" action="#">
       <input id="search-text" name="q" placeholder="Search..." type="text" />
       <button id="search-button" type="submit" onclick="searchHandler()">
         <span><i class="fas fa-search"></i></span>
       </button>
-    </div>
+    </form>
 
     <div class="container" id="content-home">
       <h1 class="welcometext">Welcome to Aalborg Storcenter!</h1>
