@@ -141,7 +141,7 @@ function searchHandler(val) {
             let product = `<div class="result" id="res${i}">
                                 <img
                                     class="product-image"
-                                    src="https://via.placeholder.com/200?text=Product+image"
+                                    src="https://via.placeholder.com/200/FFFFFF/222222?text=Product+image"
                                     alt="image missing"
                                     onclick="toMap(${i})"
                                 />

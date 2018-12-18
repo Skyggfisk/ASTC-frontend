@@ -2,7 +2,7 @@
 
 /*----- General styles -----*/
 body {
-  background-color: antiquewhite;
+  background-color: #fff;
   font-family: "Roboto", sans-serif;
   overflow-x: hidden;
   min-width: 345px;
@@ -90,7 +90,6 @@ header {
   position: relative;
   width: 100%;
   margin-bottom: 20px;
-  background-color: rgba(255, 255, 255, 0.3);
 }
 
 #search-bar1 input[type="text"],
@@ -101,7 +100,7 @@ header {
     outline: none;
     font-size: 14px;
     border-width: 0;
-    background: transparent;
+    background-color: #d7d7d7;
 }
 
 #search-button {
@@ -115,17 +114,13 @@ header {
   text-align: center;
   line-height: 42px;
   border-width: 0;
-  background-color: rgba(17, 17, 17, 0.8);
+  background-color: #222;
   cursor: pointer;
 }
 
 #search-button:hover {
   background-color: rgba(155, 155, 155, 0.3);
 }
-
-/*#search-home {
-    margin-top: calc(50% - 20px);
-}*/
 
 #app {
   position: relative;
@@ -145,6 +140,8 @@ header {
   margin-top: 20px;
 }
 
+/*----- About page -----*/
+
 .panel {
   margin-bottom: 20px;
   background-color: rgba(255, 255, 255, 0.5);
@@ -153,15 +150,23 @@ header {
   text-align: justify;
 }
 .panel-header {
-  background-color: #d4d4d42;
+  background-color: #d4d4d4;
   padding: 5px 15px;
-  border-bottom: 1px solid transparent;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
 
 .panel-body {
   padding: 10px;
+  background-color: #7a7a7a;
+  color: #fff;
+}
+
+#phone,
+#phone:visited,
+#email,
+#email:visited {
+    color: #fff;
 }
 
 /*----- Home page -----*/
@@ -239,7 +244,7 @@ header {
   justify-content: left;
   padding: 5px;
   margin-bottom: 5px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: #d7d7d7;
 }
 
 .product-image {
