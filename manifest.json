@@ -1,8 +1,8 @@
 {
   "name": "Aalborg Storcenter Katalog",
   "short_name": "ASTC",
-  "theme_color": "#faebd7",
-  "background_color": "#faebd7",
+  "theme_color": "#222222",
+  "background_color": "#ffffff",
   "display": "fullscreen",
   "orientation": "portrait",
   "Scope": "/ASTC-frontend/",
