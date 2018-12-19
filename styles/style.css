@@ -11,16 +11,6 @@ body {
     padding: 5px;
 }
 
-#scaleMarker {
-    height: 10px;
-    width: 10px;
-    position: sticky;
-    bottom: 0;
-    left: 0;
-    background-color: red;
-    z-index: 1000;
-}
-
 .container {
     margin: 0 auto;
     width: 100%;
@@ -264,16 +254,11 @@ header {
 
 /*Small*/
 @media screen and (min-width: 35.5em) {
-    #scaleMarker {
-        background-color: orange;
-    }
+
 }
 
 /*Medium*/
 @media screen and (min-width: 48em) {
-    #scaleMarker {
-        background-color: yellow;
-    }
 
     .deals-img {
         width: 130px;
@@ -283,9 +268,6 @@ header {
 
 /*Large*/
 @media screen and (min-width: 64em) {
-    #scaleMarker {
-        background-color: greenyellow;
-    }
 
     .deals-img {
         width: 150px;
@@ -300,9 +282,6 @@ header {
 
 /*XLarge*/
 @media screen and (min-width: 80em) {
-    #scaleMarker {
-        background-color: forestgreen;
-    }
 
     .deals-img {
         width: 170px;
