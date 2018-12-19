@@ -86,7 +86,7 @@ header {
 }
 
 #search-bar1,
-#search-bar2{
+#search-bar2 {
   position: relative;
   width: 100%;
   margin-bottom: 20px;
@@ -94,13 +94,13 @@ header {
 
 #search-bar1 input[type="text"],
 #search-bar2 input[type="text"] {
-    width: 90%;
-    padding: 11px 0 12px 1em;
-    color: #333;
-    outline: none;
-    font-size: 14px;
-    border-width: 0;
-    background-color: #d7d7d7;
+  width: 90%;
+  padding: 11px 0 12px 1em;
+  color: #333;
+  outline: none;
+  font-size: 14px;
+  border-width: 0;
+  background-color: #d7d7d7;
 }
 
 #search-button {
@@ -166,7 +166,7 @@ header {
 #phone:visited,
 #email,
 #email:visited {
-    color: #fff;
+  color: #fff;
 }
 
 /*----- Home page -----*/
@@ -258,6 +258,10 @@ header {
   align-self: center;
   text-align: left;
   margin-left: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: calc(100% - 160px);
 }
 
 .seller-info {
@@ -267,7 +271,6 @@ header {
 .seller-name,
 .seller-price {
   display: inline;
-  width: 50%;
   margin-right: 0;
 }
 
@@ -335,11 +338,12 @@ header {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-top: calc(20%);
   border: 16px solid #f3f3f3;
   border-radius: 50%;
-  border-top: 16px solid #3498db;
-  width: 120px;
-  height: 120px;
+  border-top: 16px solid #7a7a7a;
+  width: 80px;
+  height: 80px;
   -webkit-animation: spin 2s linear infinite; /* Safari */
   animation: spin 2s linear infinite;
 }
