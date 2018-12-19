@@ -123,7 +123,7 @@ header {
     position: relative;
     padding-bottom: 100%;
     padding-top: 30px;
-    height: 0;
+    height: 300px;
     overflow: hidden;
 }
 
@@ -254,7 +254,9 @@ header {
 
 /*Small*/
 @media screen and (min-width: 35.5em) {
-
+    #app {
+        height: 500px;
+    }
 }
 
 /*Medium*/
@@ -263,6 +265,10 @@ header {
     .deals-img {
         width: 130px;
         height: 130px;
+    }
+
+    #app {
+        height: 700px;
     }
 }
 
