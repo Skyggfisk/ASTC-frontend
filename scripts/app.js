@@ -103,7 +103,8 @@ function searchHandler(val) {
   // show search results and clear previous
   let searchcontent = document.getElementById("content-searchresults");
   searchcontent.hidden = false;
-  searchcontent.innerHTML = "<div id='loader'><i  class='fa fa-spinner fa-spin'></i></div>";
+  searchcontent.innerHTML =
+    "<div id='loader'><i  class='fa fa-spinner fa-spin'></i></div>";
 
   // get search bar input
   let searchquery = document.getElementById("search-text" + val).value;
@@ -184,7 +185,8 @@ function toMap(index) {
   mapResultDiv.appendChild(clone);
 
   pArr[index].productSellers.forEach(element => {
-    let shopname = element.shopname.replace(/\s+/g, "");
+    let shopname = element.shopname.replace(/[\&\s]+/g, "");
+    console.log(shopname);
     let iframe = document.getElementById("frame");
     let selectedTarget = iframe.contentWindow.document.getElementById(shopname);
     selectedTarget.classList.add("selectedshop");
